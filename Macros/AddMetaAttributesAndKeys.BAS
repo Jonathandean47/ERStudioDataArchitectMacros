@@ -5,7 +5,7 @@
 '----------------------------------------------------------------
 
 Sub Main
-    Dim MyDiagram As Diagram
+	Dim MyDiagram As Diagram
 	Dim MyModel As Model
 	Dim MySubModel As SubModel
 	Dim MyDictionary As Dictionary
@@ -34,22 +34,22 @@ Sub Main
 	Dim SystemKeyID As Integer
 	Const RelationshipTypeNonIdentifyingMandatory As Integer = 1
 
-    Dim ID As Integer
+	Dim ID As Integer
 	Dim ObjType As Integer
 	Dim MyIndex As Index
 
-    ' Set base variables
+	' Set base variables
 	Set MyDiagram = DiagramManager.ActiveDiagram
 	Set MyModel = MyDiagram.ActiveModel
 	Set MySubModel = MyModel.ActiveSubModel
 	Set MyDictionary = MyDiagram.Dictionary
 
-    ' Determine Domains.
-    Set MyDomain = MyDictionary.Domains
-    SmallKeyID = MyDomain.Item("SmallKey").ID
-    ShortNameID = MyDomain.Item("ShortName").ID
-    MetaIsActiveID = MyDomain.Item("MetaIsActive").ID
-    MetaIsDeletedID = MyDomain.Item("MetaIsDeleted").ID
+	' Determine Domains.
+	Set MyDomain = MyDictionary.Domains
+	SmallKeyID = MyDomain.Item("SmallKey").ID
+	ShortNameID = MyDomain.Item("ShortName").ID
+	MetaIsActiveID = MyDomain.Item("MetaIsActive").ID
+	MetaIsDeletedID = MyDomain.Item("MetaIsDeleted").ID
 	MetaHashbyteValueID = MyDomain.Item("MetaHashbyteValue").ID
 	MetaCreatedDateID = MyDomain.Item("MetaCreatedDate").ID
 	MetaModifiedDateID = MyDomain.Item("MetaModifiedDate").ID
@@ -86,7 +86,7 @@ Sub Main
 				AlternateKeyName = "AK_" + EntityName
 				
 				' Add the PK attribute								
-                Set MyAttribute = MyEntity.Attributes.Add(AttributeName + "Key", True)
+				Set MyAttribute = MyEntity.Attributes.Add(AttributeName + "Key", True)
 				MyAttribute.DomainId = SmallKeyID
 
 				'Set the alternate key
@@ -115,7 +115,7 @@ Sub Main
 				MyRelationship.BusinessName = MyRelationship.Name
 
 				' Add Meta Attributes
-	            Set MyAttribute = MyEntity.Attributes.Add("MetaIsActive", False)
+				Set MyAttribute = MyEntity.Attributes.Add("MetaIsActive", False)
 				MyAttribute.DomainId = MetaIsActiveID
 				Set MyAttribute = MyEntity.Attributes.Add("MetaIsDeleted", False)
 				MyAttribute.DomainId = MetaIsDeletedID
