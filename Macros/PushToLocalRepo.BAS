@@ -11,8 +11,8 @@ Sub Main
 
 
     Set theDiagram = DiagramManager.ActiveDiagram
-    theDiagram.SaveFile("C:\Users\jonathan.dean\OneDrive - Neudesic\Documents\Neudesic\CoorsTek\CoorsTek Data Warehouse_Detached.DM1")
-    fs.CopyFile("C:\Users\jonathan.dean\OneDrive - Neudesic\Documents\Neudesic\CoorsTek\CoorsTek Data Warehouse_Detached.DM1", "C:\Users\jonathan.dean\Git\Data Warehouse\CoorsTek Data Warehouse.DM1")
+    theDiagram.SaveFile("MyLocalCopy.DM1")
+    fs.CopyFile("MyLocalCopy.DM1", "RepoCopy.DM1")
     Set logicalModel = theDiagram.ActiveModel
 
     For Each model In theDiagram.Models
@@ -23,7 +23,7 @@ Sub Main
     Next
 
 	Set physicalModelGenerator = logicalModel.PhysicalGenerationObject
-	physicalModelGenerator.GenPhysicalUsingFileBasedQuickLaunch("C:\Users\jonathan.dean\AppData\Roaming\Idera\ERStudio\XML\GeneratePhysicalModel.gpo")
+	physicalModelGenerator.GenPhysicalUsingFileBasedQuickLaunch("{home}\AppData\Roaming\Idera\ERStudio\XML\GeneratePhysicalModel.gpo")
 
 	For Each model In theDiagram.Models
     	If model.Name = "CoorsTekDW" Then
@@ -33,8 +33,8 @@ Sub Main
     Next
 
 	Set theDDLGenerator = physicalModel.DDLGenerationObject
-	theDDLGenerator.GenDDLUsingFileBasedQuickLaunch("C:\Users\jonathan.dean\AppData\Roaming\Idera\ERStudio\XML\GenerateLocalDeploymentScript.ddo")
-	theDDLGenerator.GenDDLUsingFileBasedQuickLaunch("C:\Users\jonathan.dean\AppData\Roaming\Idera\ERStudio\XML\GenerateDDL.ddo")
+	theDDLGenerator.GenDDLUsingFileBasedQuickLaunch("{home}\AppData\Roaming\Idera\ERStudio\XML\GenerateLocalDeploymentScript.ddo")
+	theDDLGenerator.GenDDLUsingFileBasedQuickLaunch("{home}\AppData\Roaming\Idera\ERStudio\XML\GenerateDDL.ddo")
 
     For Each model In theDiagram.Models
     	If model.Name = "CoorsTekDW" Then
